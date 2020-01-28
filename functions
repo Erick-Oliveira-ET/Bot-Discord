@@ -1,0 +1,32 @@
+import random
+
+def SorteioDeNome(listofnames):
+    listgot = listofnames
+    liscache, lista, i = [], [], 0
+    while i < len(listgot):
+        a = random.choice(listgot)
+        if not a in liscache:
+            lista.append(a)
+            print(a)
+            i += 1
+        liscache.append(a)
+
+    return lista
+
+def randomB99():
+    brooklyn_99_quotes = [
+        "I'm the humam form of the 100 emoji.",
+        "Bingpot!",
+        (
+            "Cool. Cool cool cool cool cool cool cool, no doubt no doubt no doubt no doubt"
+        ),
+        "Sarge, with all due respect, I am gonna completely ignore everything you just said.",
+        ("The English language can not fully capture the depth and complexity of my thoughts,"
+         " so I’m incorporating emojis into my speech to better express myself. Winky face."
+         ),
+        "Captain Wuntch. Good to see you. But if you’re here, who’s guarding Hades?",
+        "If I die, turn my tweets into a book."
+    ]
+    print(brooklyn_99_quotes)
+    response = random.choice(brooklyn_99_quotes)
+    return response

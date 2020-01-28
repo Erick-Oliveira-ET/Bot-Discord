@@ -1,0 +1,41 @@
+import discord
+import functions
+from discord.ext import commands
+
+TOKEN = ""
+client = discord.Client()
+bot = commands.Bot(command_prefix='!')
+
+@client.event
+async def on_ready():
+    print('We have logged in as {0.user}'.format(bot))
+
+@client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
+
+    if message.content.startswith('$hello'):
+        member = message.author.name
+        await message.channel.send(f'Me deixa em paz, {member}')
+
+    if message.content.startswith('$SorteioDeNomes'):
+        member = message.author.name
+        print('a')
+        message.channel.send(message.content)
+        listofnames = functions.SorteioDeNome(message.content)
+        await message.channel.send(f'Me deixa em paz {member}!!! Tá aqui a lista: {listofnames}')
+
+@bot.command(name='hello')
+async def on_message(message):
+    if message.author == client.user:
+        return
+
+    member = message.author.name
+    await message.channel.send(f'Me deixa em paz, {member}')
+
+@bot.command(name='99')
+async def b99(ctx):
+    await ctx.send(functions.randomB99())
+
+bot.run(TOKEN)
